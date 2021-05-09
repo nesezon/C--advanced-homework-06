@@ -18,7 +18,7 @@
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="2*"/>
       </Grid.ColumnDefinitions>
-      <TreeView x:Name="Tree">
+      <TreeView x:Name="Tree" FontFamily="MS Sans Serif" FontSize="13">
         <TreeView.ItemTemplate>
           <HierarchicalDataTemplate DataType="{x:Type local:TreeItem}" ItemsSource="{Binding Items}">
             <TextBlock Text="{Binding Title}" />
@@ -26,7 +26,8 @@
         </TreeView.ItemTemplate>
         <TreeView.ItemContainerStyle>
           <Style TargetType="TreeViewItem">
-            <Setter Property="TreeViewItem.IsExpanded" Value="True"/>
+            <Setter Property="IsExpanded" Value="True"/>
+            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="treeItem_Click"/>
           </Style>
         </TreeView.ItemContainerStyle>
       </TreeView>
@@ -36,7 +37,7 @@
                     ShowsPreview="False"
                     Width="3" Background="#ffA9A9A9">
       </GridSplitter>
-      <TextBox Grid.Column="2" x:Name="Info" IsReadOnly="True"/>
+      <TextBox Grid.Column="2" x:Name="Info" IsReadOnly="True" FontFamily="Consolas" FontSize="13" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap"/>
     </Grid>
   </DockPanel>
 </Window>

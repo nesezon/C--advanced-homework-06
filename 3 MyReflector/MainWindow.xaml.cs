@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using Microsoft.Win32;
 
 namespace MyReflector {
@@ -32,17 +33,25 @@ namespace MyReflector {
           TreeItem typeItem = new TreeItem { Title = type.ToString() };
           // Методы типа
           MethodInfo[] methods = type.GetMethods();
-          if (methods != null) {
-            foreach (MethodInfo method in methods) {
-              string MethodBody = getMethodBody(method);
-              typeItem.Items.Add(new TreeItem { Title = method.Name, Description = MethodBody });
-            }
-            root.Items.Add(typeItem);
+          foreach (MethodInfo method in methods) {
+            string MethodBody = getMethodBody(method);
+            typeItem.Items.Add(new TreeItem { Title = method.Name, Description = MethodBody });
           }
+          root.Items.Add(typeItem);
         }
 
-        // Отображаю в дереве
+        // Подготавливаю дерево и заполняю
+        Info.Text = string.Empty;
+        Tree.Items.Clear();
         Tree.Items.Add(root);
+
+        // выделяю первый элемент
+        TreeViewItem nodeToSel = Tree.ItemContainerGenerator.ContainerFromItem(Tree.Items[0]) as TreeViewItem;
+        if (Tree.Items.Count > 0 && nodeToSel != null) {
+          nodeToSel.IsSelected = true;
+          Info.Text = ((TreeItem)nodeToSel.DataContext).Description;
+          Tree.Focus();
+        }
       }
     }
 
@@ -51,9 +60,7 @@ namespace MyReflector {
       var methodBody = method.GetMethodBody();
       if (methodBody != null) {
         var byteArray = methodBody.GetILAsByteArray();
-        foreach (var b in byteArray) {
-          result += b + ":";
-        }
+        result = BitConverter.ToString(byteArray).Replace('-', ':');
       }
       return result;
     }
@@ -79,6 +86,11 @@ namespace MyReflector {
         sb.AppendFormat("{0,-25}", title + ":");
         sb.Append(txt);
       }
+    }
+
+    void treeItem_Click(object sender, RoutedEventArgs e) {
+      var item = sender as TreeViewItem;
+      Info.Text = ((TreeItem)item.DataContext).Description;
     }
   }
 
