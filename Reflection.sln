@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1 TConverterLibrary", "1 TC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 TConverter", "2 TConverter\2 TConverter.csproj", "{08DC7E56-359D-43C1-A443-2D8272700C8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 MyReflector", "MyReflector\3 MyReflector.csproj", "{B8A5DD98-889C-4A9E-9A11-DC2643F91C28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{08DC7E56-359D-43C1-A443-2D8272700C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08DC7E56-359D-43C1-A443-2D8272700C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08DC7E56-359D-43C1-A443-2D8272700C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A5DD98-889C-4A9E-9A11-DC2643F91C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A5DD98-889C-4A9E-9A11-DC2643F91C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A5DD98-889C-4A9E-9A11-DC2643F91C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A5DD98-889C-4A9E-9A11-DC2643F91C28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
