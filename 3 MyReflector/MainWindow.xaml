@@ -1,21 +1,31 @@
 ﻿<Window x:Class="MyReflector.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen"
-        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top" VerticalAlignment="Center" Background="#FFEDEDED" BorderThickness="0,0,0,1" BorderBrush="#FFC2C2C2">
+      <MenuItem Header="_Файл" VerticalAlignment="Center" Click="FileOpen_Click"/>
+    </Menu>
+    <Border BorderBrush="#FF9A9A9A" BorderThickness="0,1,0,0"  DockPanel.Dock = "Bottom" SnapsToDevicePixels="True">
+      <StatusBar Height="20" Margin="0" BorderBrush="#EFEFEF" BorderThickness="0,1,0,0" SnapsToDevicePixels="True">
+      </StatusBar>
+    </Border>
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition/>
+        <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
-        <ColumnDefinition/>
+        <ColumnDefinition Width="2*"/>
       </Grid.ColumnDefinitions>
-      <TextBox Grid.Column="0">1</TextBox>
-      <GridSplitter x:Name="Separator" HorizontalAlignment="Center"
+      <TreeView x:Name="Tree"/>
+      <GridSplitter HorizontalAlignment="Center"
                     VerticalAlignment="Stretch"
                     Grid.Column="1"
                     ShowsPreview="False"
                     Width="3" Background="#ffA9A9A9">
       </GridSplitter>
-      <TextBox Grid.Column="2">2</TextBox>
+      <TextBox Grid.Column="2" x:Name="Info"/>
     </Grid>
+  </DockPanel>
 </Window>
